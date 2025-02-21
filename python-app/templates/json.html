@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Цитата Стэтхэма</title>
+    <link rel="icon" href="{{ url_for('static', filename='icons/json.png') }}" type="image/png">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .quote-container {
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            background-color: white;
+            max-width: 600px;
+            transition: transform 0.3s;
+        }
+
+        .quote {
+            font-size: 24px;
+            font-weight: bold;
+            animation: rainbow 5s linear infinite;
+        }
+
+        @keyframes rainbow {
+            0% { color: red; }
+            14% { color: orange; }
+            28% { color: rgb(238, 214, 0); }
+            42% { color: rgb(2, 145, 2); }
+            57% { color: blue; }
+            71% { color: indigo; }
+            85% { color: violet; }
+            100% { color: red; }
+        }
+
+        .author {
+            font-size: 18px;
+            margin-top: 10px;
+            color: #555;
+        }
+
+        .button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        .img-container {
+            margin-bottom: 20px;
+        }
+        .json-img {
+            width: 150px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="img-container">
+        <img src="{{ url_for('static', filename='icons/json.png') }}" alt="Джэйсон не прогрузился..." class="json-img">
+    </div>
+    <div class="quote-container">
+        <div class="quote">{{ quotation }}</div>
+        <div class="author"> — (c) Джейсон Стэтхэм</div>
+        <button class="button" onclick="location.reload()">Получить другую цитату</button>
+    </div>
+</body>
+</html>

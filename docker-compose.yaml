@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  jsapp:
+    build:
+      context: ./python-app
+      dockerfile: dockerfile
+
+  nginx:
+    build:
+      context: ./nginx
+      dockerfile: dockerfile
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - jsapp
